@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<style>
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>닮은 포켓몬 찾기</title>
+<meta name="description" content="">
+<meta name="author" content="">
+<!-- Favicons
+    ================================================== -->
+<link rel="shortcut icon" href="http://pokemonkorea.co.kr/img/_con.ico" type="image/x-icon">
+<!-- Bootstrap -->
+ <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='font-awesome.css') }}">
+<!-- Stylesheet -->
+ <link rel="stylesheet" href="{{ url_for('static', filename='layout.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='nivo-lightbox.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='default.css') }}">
+<link href="{{ url_for('static', filename='font.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='font1.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='font2.css') }}" rel="stylesheet">
+<script>var __adobewebfontsappname__="dreamweaver"</script>
+<script src= "{{ url_for('static', filename='advent-pro_n1_default.js')}}" type="text/javascript"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='jquery-1.11.1.js')}}"></script> 
+<script type="text/javascript" src="{{ url_for('static', filename='bootstrap.js') }}"></script> 
+<script type="text/javascript" src="{{ url_for('static', filename='SmoothScroll.js')}}"></script> 
+<script type="text/javascript" src="{{ url_for('static', filename='nivo-lightbox.js')}}"></script> 
+<script type="text/javascript" src="{{ url_for('static', filename='jqBootstrapValidation.js')}}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='contact_me.js')}}"></script> 
+<script type="text/javascript" src="{{ url_for('static', filename='main.js')}}"></script>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script>
+	 $(function(){
+		$(window).scroll(function(){
+		var navbar = $(this).scrollTop();
+		console.log(navbar);
+		// var $header = $('header');
+		var $navbar_tag = $('.navbar')
+		if(navbar > 10){
+			$navbar_tag.addClass('activated');
+		}else{
+			$navbar_tag.removeClass('activated');
+		}
+	})
+	})
+</script>
+<script type="text/javascript">
+	function previewImage(targetObj, view_area) {
+	var preview = document.getElementById(view_area); //div id
+	var ua = window.navigator.userAgent;
+
+	var files = targetObj.files;
+	for ( var i = 0; i < files.length; i++) {
+		var file = files[i];
+		var imageType = /image.*/; //이미지 파일일경우만.. 뿌려준다.
+		if (!file.type.match(imageType))
+			continue;
+		var prevImg = document.getElementById("prev_" + view_area); //이전에 미리보기가 있다면 삭제
+		if (prevImg) {
+			preview.removeChild(prevImg);
+		}
+		var img = document.createElement("img"); 
+		img.id = "prev_" + view_area;
+		img.classList.add("obj");
+		img.file = file;
+		img.style.width = '400px';
+		preview.appendChild(img);
+		if (window.FileReader) { // FireFox, Chrome, Opera 확인.
+			var reader = new FileReader();
+			reader.onloadend = (function(aImg) {
+				return function(e) {
+					aImg.src = e.target.result;
+				};
+			})(img);
+			reader.readAsDataURL(file);
+		} else { // safari is not supported FileReader
+			//alert('not supported FileReader');
+			if (!document.getElementById("sfr_preview_error_"
+					+ view_area)) {
+				var info = document.createElement("p");
+				info.id = "sfr_preview_error_" + view_area;
+				info.innerHTML = "not supported FileReader";
+				preview.insertBefore(info, null);
+			}
+		}
+	}
+}
+
+
+</script>
+
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<!-- Navigation -->
+<nav id="menu" class="navbar navbar-default navbar-fixed-top">
+  <div class="container"> 
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="container-fluid" style="position:relative;max-width:500px;padding:0;">
+      <p style ='margin:10px'align="center"><span style="color:#5f6268;font-size: 0.5em; "></span>Pokémon AI</p>
+      <p align="center"><span style="color:black;font-size:1.3em;font-weight:bold;"> 닮은 <font color="#ff0000">포켓몬</font> 찾기</span></p>
+    </div>
+  </div>
+</nav>
+<!-- Header -->
+<header id="header">
+  <div class="intro">
+    <div class="overlay">
+      <div class="container"  align = "center">
+        <div class="row" style="padding:100px;">
+          <div class="col-md-8 col-md-offset-2 login-text">
+		
+            <h2 style ="font-family:NanumSquare;color:black;">닮은 포켓몬을 찾아보세요</h2>
+			
+			
+				<div align="center" id='view_area' style = "padding:10px" ></div>
+ 				<div class="image-upload-wrap" >
+			
+					<form method="POST" action="/output" enctype="multipart/form-data">	
+						
+							
+					
+			
+					<div class="input-group input-file" >
+							<input type="file" class = "form-control form-control-lg"  name="user_img" id="user_img" value="userIMgage" onchange="previewImage(this,'view_area')"/>
+							<span class="input-group-btn" >
+								<input type="submit" class = "btn btn-dark" value="전송" style = "position:relative; right:30px; top:0px" />
+					    </span>
+					</div>
+						
+					</form>	
+				</div>
+
+                <div>				
+                    <p><font color=" #838383" size="2">사진은 서버에 저장되지 않으니 안심하고 이용하세요</font></p>
+                </div>
+				
+
+				
+            </div>
+  	
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Footer Section -->
+
+<div id="footer">
+  <div class="container text-center">
+    <p>&copy; 2020 Pokémon AI. ALL RIGHTS RESERVED.</p>
+  </div>
+</div>
+
+</body>
+</html>
