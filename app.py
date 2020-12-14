@@ -9,9 +9,9 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 
 
-@app.route("/input")
+@app.route("/index")
 def input():
-    return render_template("input.html")
+    return render_template("index.html")
     
 @app.route("/test")
 def test():
